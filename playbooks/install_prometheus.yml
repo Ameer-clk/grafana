@@ -1,0 +1,27 @@
+---
+- name: Install Docker
+  become: true
+  apt:
+    name: docker.io
+    state: present
+
+- name: Install Docker Compose
+  become: true
+  apt:
+    name: docker-compose
+    state: present
+
+- name: Create directory for Prometheus configuration
+  become: true
+  file:
+    path: /etc/prometheus
+    state: directory
+
+- name: Copy Prometheus configuration file
+  copy:
+    src: ./prometheus.yml
+    dest: /etc/prometheus/prometheus.yml
+
+- name: Start Prometheus service
+  become: true
+  command: docker-compose -f /etc/prometheus/docker-compose.yml up -d
