@@ -35,7 +35,6 @@
       docker_container:
         name: blackbox
         image: prom/blackbox-exporter
-        state: started
         restart_policy: always
         ports:
           - "9115:9115"
@@ -46,7 +45,6 @@
       docker_container:
         name: prometheus
         image: prom/prometheus
-        state: started
         restart_policy: always
         ports:
           - "9090:9090"
@@ -57,7 +55,6 @@
       docker_container:
         name: grafana
         image: grafana/grafana
-        state: started
         restart_policy: always
         ports:
           - "3000:3000"
