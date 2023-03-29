@@ -4,24 +4,24 @@
   become: true
   vars:
     prometheus_version: "2.22.0"
-    prometheus_data_directory: "/var/lib/prometheus"
+    
 
   tasks:
-  - name: Create Prometheus data directory
+  - name: Create Prometheus directory
     file:
-      path: /home/ubuntu/prometheus
+      path: /etc/prometheus
       state: directory
   
   tasks:
-  - name: Create Grafana data directory
+  - name: Create Grafana directory
     file:
-      path: /home/ubuntu/grafana
+      path: /var/lib/grafana 
       state: directory
 
   tasks:
-  - name: Create BlackBox-Exporter data directory 
+  - name: Create BlackBox-Exporter directory 
     file:
-      path: /home/ubuntu/BlackBox
+      path: /etc/blackbox_exporter
       state: directory
 
   - name: Start Prometheus container
@@ -31,15 +31,17 @@
       ports:
         - "9090:9090"
       volumes:
-        - /home/ubuntu/prometheus.yml
+        - /home/ubuntu/prometheus.yml:/etc/prometheus
       restart_policy: always
 
   - name: Start Grafana container
     docker_container:
-      name: garfana
+      name: grafana
       image: grafana/grafana
       ports:
         - "3000:3000"
+      volumes:
+        - /home/ubuntu/grafana-data:/var/lib/grafana
       restart_policy: always
 
   - name: Start BlackBox-Exporter container
@@ -49,6 +51,7 @@
       ports: 
         - "9115:9115"
         volumes:
-          - /home/ubuntu/blackbox.yml
+          - /home/ubuntu/blackbox.yml:/etc/blackbox_exporter
         restart_policy: always
+
 
