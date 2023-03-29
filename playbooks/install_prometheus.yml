@@ -1,57 +1,63 @@
----
-- name: Install Prometheus using Docker
-  hosts: local
+- hosts: local
   become: true
-  vars:
-    prometheus_version: "2.22.0"
-    
-
   tasks:
-  - name: Create Prometheus directory
-    file:
-      path: /etc/prometheus
-      state: directory
-  
-  tasks:
-  - name: Create Grafana directory
-    file:
-      path: /var/lib/grafana 
-      state: directory
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
 
-  tasks:
-  - name: Create BlackBox-Exporter directory 
-    file:
-      path: /etc/blackbox_exporter
-      state: directory
+    - name: Install Docker Compose
+      apt:
+        name: docker-compose
+        state: present
 
-  - name: Start Prometheus container
-    docker_container:
-      name: prometheus
-      image: prom/prometheus
-      ports:
-        - "9090:9090"
-      volumes:
-        - /home/ubuntu/prometheus.yml:/etc/prometheus
-      restart_policy: always
+    - name: Create Prometheus directory
+      file:
+        path: /etc/prometheus
+        state: directory
 
-  - name: Start Grafana container
-    docker_container:
-      name: grafana
-      image: grafana/grafana
-      ports:
-        - "3000:3000"
-      volumes:
-        - /home/ubuntu/grafana-data:/var/lib/grafana
-      restart_policy: always
+    - name: Create Grafana directory
+      file:
+        path: /etc/grafana
+        state: directory
 
-  - name: Start BlackBox-Exporter container
-    docker_container:
-      name: blackbox
-      image: prom/blackbox-exporter
-      ports: 
-        - "9115:9115"
-        volumes:
-          - /home/ubuntu/blackbox.yml:/etc/blackbox_exporter
+    - name: Create BlackBox-Exporter directory 
+      file:
+        path: /etc/blackbox_exporter
+        state: directory    
+
+    - name: Install Node Exporter 
+      apt:
+        name: prometheus-node-exporter 
+        state: present    
+
+    - name: Start Blackbox-Exporter container
+      docker_container:
+        name: blackbox
+        image: prom/blackbox-exporter
+        state: started
         restart_policy: always
+        ports:
+          - "9115:9115"
+        volumes:
+          - /home/ubuntu/blackbox/blackbox.yml:/etc/blackbox_exporter/blackbox.yml
 
+    - name: Start Prometheus container
+      docker_container:
+        name: prometheus
+        image: prom/prometheus
+        state: started
+        restart_policy: always
+        ports:
+          - "9090:9090"
+        volumes:
+          - /home/ubuntu/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
 
+    - name: Start Grafana container
+      docker_container:
+        name: grafana
+        image: grafana/grafana
+        state: started
+        restart_policy: always
+        ports:
+          - "3000:3000"
