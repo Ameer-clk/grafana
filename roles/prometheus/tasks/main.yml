@@ -1,0 +1,15 @@
+ name: Create Prometheus directory
+  file:
+    path: /etc/prometheus
+    state: directory
+
+- name: Start Prometheus container
+  docker_container:
+    name: prometheus
+    image: prom/prometheus
+    state: started
+    restart_policy: always
+    ports:
+      - "9090:9090"
+    volumes:
+      - /home/ubuntu/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
