@@ -1,5 +1,5 @@
  name: Create Prometheus directory
-  file:
+ file:
     path: /etc/prometheus
     state: directory
 
