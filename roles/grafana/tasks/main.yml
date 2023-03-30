@@ -1,0 +1,13 @@
+- name: Create Grafana directory
+  file:
+    path: /etc/grafana
+    state: directory
+
+- name: Start Grafana container
+  docker_container:
+    name: grafana
+    image: grafana/grafana
+    state: started
+    restart_policy: always
+    ports:
+      - "3000:3000"
