@@ -1,3 +1,5 @@
+---
+# tasks file for blackbox-exporter
 - name: Create BlackBox-Exporter directory 
   file:
     path: /etc/blackbox_exporter
