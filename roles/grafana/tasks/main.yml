@@ -1,5 +1,3 @@
----
-# tasks file for grafana
 - name: Create Grafana directory
   file:
     path: /etc/grafana
