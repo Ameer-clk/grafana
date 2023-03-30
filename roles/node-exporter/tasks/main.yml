@@ -1,5 +1,3 @@
----
-# tasks file for node-exporter
 - name: Install Node Exporter 
   apt:
     name: prometheus-node-exporter 
