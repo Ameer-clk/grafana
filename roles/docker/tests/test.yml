@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: local
   remote_user: root
   roles:
     - docker
