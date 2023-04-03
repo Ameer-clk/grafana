@@ -1,15 +1,33 @@
-- name: Create BlackBox-Exporter directory 
-  file:
-    path: /etc/blackbox_exporter
-    state: directory  
+---
+- name: Preflight
+  ansible.builtin.include_tasks: preflight.yml
+  tags:
+    - blackbox_exporter_install
+    - blackbox_exporter_configure
+    - blackbox_exporter_run
 
-- name: Install Blackbox Exporter
-  docker_container:
-    name: blackbox
-    image: prom/blackbox-exporter
+- name: Install
+  ansible.builtin.include_tasks:
+    file: install.yml
+    apply:
+      become: true
+  tags:
+    - blackbox_exporter_install
+
+- name: Configure
+  ansible.builtin.include_tasks:
+    file: configure.yml
+    apply:
+      become: true
+  tags:
+    - blackbox_exporter_configure
+
+- name: Ensure blackbox_exporter service is started and enabled
+  become: true
+  ansible.builtin.systemd:
+    daemon_reload: true
+    name: blackbox_exporter
     state: started
-    restart_policy: always
-    ports:
-      - "9115:9115"
-    volumes:
-      - /home/ubuntu/blackbox/blackbox.yml:/etc/blackbox_exporter/blackbox.yml
+    enabled: true
+  tags:
+    - blackbox_exporter_run
