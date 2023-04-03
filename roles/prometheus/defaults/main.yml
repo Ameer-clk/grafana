@@ -1,2 +1,36 @@
 ---
-# defaults file for prometheus
+prometheus_version: 2.27.0
+prometheus_binary_local_dir: ''
+prometheus_binary_url: "https://github.com/{{ _prometheus_repo }}/releases/download/v{{ prometheus_version }}/\
+                        prometheus-{{ prometheus_version }}.linux-{{ go_arch }}.tar.gz"
+prometheus_checksums_url: "https://github.com/{{ _prometheus_repo }}/releases/download/v{{ prometheus_version }}/sha256sums.txt"
+prometheus_skip_install: false
+
+prometheus_config_dir: /etc/prometheus
+prometheus_db_dir: /var/lib/prometheus
+prometheus_read_only_dirs: []
+
+global:
+  scrape_interval:
+scrape_configs:
+
+  - job_name: 'promndnode'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['localhost:9090','65.2.148.233:9100']
+
+  - job_name: 'blackbox_exporter'
+    metrics_path: /probe
+    params:
+      module: [http_2xx]
+    static_configs:
+      - targets:
+        - https://maia-care.com
+        - https://assessmentservice.dev.maia-care.com/admin
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: 65.2.148.233:9115
