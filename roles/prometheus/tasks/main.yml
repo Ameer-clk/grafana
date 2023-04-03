@@ -1,15 +1,33 @@
-- name: Create Prometheus directory
-  file:
-    path: /etc/prometheus
-    state: directory
+---
+- name: Preflight
+  ansible.builtin.include_tasks: preflight.yml
+  tags:
+    - prometheus_configure
+    - prometheus_install
+    - prometheus_run
 
-- name: Start Prometheus container
-  docker_container:
+- name: Install
+  ansible.builtin.include_tasks:
+    file: install.yml
+    apply:
+      become: true
+  tags:
+    - prometheus_install
+
+- name: Configure
+  ansible.builtin.include_tasks:
+    file: configure.yml
+    apply:
+      become: true
+  tags:
+    - prometheus_configure
+
+- name: Ensure prometheus service is started and enabled
+  become: true
+  ansible.builtin.systemd:
+    daemon_reload: true
     name: prometheus
-    image: prom/prometheus
     state: started
-    restart_policy: always
-    ports:
-      - "9090:9090"
-    volumes:
-      - /home/ubuntu/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    enabled: true
+  tags:
+    - prometheus_run
