@@ -1,0 +1,13 @@
+---
+# tasks file for blackbox-exporter
+- name: Install Blackbox Exporter
+  docker_container:
+    name: blackbox
+    image: prom/blackbox-exporter
+    state: started
+    restart_policy: always
+    ports:
+      - "9115:9115"
+    volumes:
+      - /var/lib/monitoring-iinerds/blackbox.yml:/etc/blackbox_exporter/blackbox.yml
+
