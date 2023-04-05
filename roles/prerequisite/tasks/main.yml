@@ -1,0 +1,17 @@
+---
+  - name: Check if directory exists
+    stat:
+      path: /var/lib/monitoring-iinerds
+    register: dir_check
+
+  - name: Clone repository
+    git:
+        repo: "{{ repo_url }}"
+        dest: /var/lib/monitoring-iinerds
+    when: not dir_check.stat.exists
+
+  - name: Replace IP address in Prometheus config file
+    replace:
+        path: /var/lib/monitoring-iinerds/prometheus.yml
+        regexp: '(\d{1,3}\.){3}\d{1,3}'
+        replace: '{{ public_ip }}'

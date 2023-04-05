@@ -1,0 +1,4 @@
+---
+# vars file for prerequisite
+public_ip: "{{ lookup('pipe', 'curl -s ifconfig.me/ip') }}"
+repo_url: https://github.com/Ameer-clk/monitoring-iinerds.git
