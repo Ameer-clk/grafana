@@ -1,6 +1,9 @@
 ---
 # tasks file for node-exporter
-- name: Install Node Exporter
-  apt:
-    name: prometheus-node-exporter
-    state: present
+- name: Run Node Exporter container
+  docker_container:
+        name: node-exporter
+        image: prom/node-exporter
+        restart_policy: always
+        network_mode: host
+        publish_all_ports: true
