@@ -1,6 +1,6 @@
 ---
 # tasks file for node-exporter
 - name: Install Node Exporter
-  yum:
+  apt:
     name: prometheus-node-exporter
     state: present
