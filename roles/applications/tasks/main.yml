@@ -1,0 +1,8 @@
+---
+# tasks file for roles/applications
+# - name: Change to Docker Compose directory and start the Compose file
+#   become: true
+#   shell: |
+#     cd /var/lib/ansible
+#     docker compose up -d
+#
