@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+  blackbox-exporter:
+    image: prom/blackbox-exporter
+    restart: always
+    ports:
+      - "9115:9115"
+    volumes:
+      - /var/lib/monitoring-iinerds/blackbox.yml:/etc/blackbox_exporter/blackbox.yml
+      
+  node-exporter:
+    image: prom/node-exporter
+    restart: always
+    ports:
+      - "9100:9100"
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.ignored-mount-points'
+      - '^/(sys|proc|dev|host|etc)($|/)'    
+
+  prometheus:
+    image: prom/prometheus
+    restart: always
+    ports:
+      - "9090:9090"
+    volumes:
+      - /var/lib/monitoring-iinerds/prometheus.yml:/etc/prometheus/prometheus.yml
+    depends_on:
+      - node-exporter
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--web.enable-lifecycle'
+      - '--web.enable-admin-api'
+
+  grafana:
+    image: grafana/grafana
+    restart: always
+    ports:
+      - "3000:3000"
+
