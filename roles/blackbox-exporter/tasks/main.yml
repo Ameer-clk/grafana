@@ -9,5 +9,5 @@
     ports:
       - "9115:9115"
     volumes:
-      - /var/lib/monitoring-iinerds/blackbox.yml:/etc/blackbox_exporter/blackbox.yml
+      - /var/lib/monitoring-prometheus/blackbox.yml:/etc/blackbox_exporter/blackbox.yml
 
