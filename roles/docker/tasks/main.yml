@@ -25,8 +25,7 @@
     - name: Install Docker
       package:
         name:
-          - docker-ce
-          - docker.io
+          - docker.ce
           - docker-ce-cli
           - containerd.io
         state: present
@@ -55,6 +54,7 @@
     - name: Install Docker
       package:
         name:
+          - podman-docker
           - docker-ce
           - docker-ce-cli
           - containerd.io
