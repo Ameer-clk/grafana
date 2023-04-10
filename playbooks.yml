@@ -4,7 +4,7 @@
   become: true
   vars:
     public_ip: "{{ lookup('pipe', 'curl -s ifconfig.me/ip') }}"
-    repo_url: https://github.com/imjerri/ansible-prometheus.git
+    repo_url: https://github.com/Ameer-clk/monitoring-prometheus.git
   tasks:
     - name: Install Docker
       package:
@@ -21,18 +21,18 @@
 
     - name: Check if directory exists
       stat:
-        path: /var/lib/monitoring-iinerds
+        path: /var/lib/monitoring-prometheus
       register: dir_check
 
     - name: Clone repository
       git:
         repo: "{{ repo_url }}"
-        dest: /var/lib/monitoring-iinerds
+        dest: /var/lib/monitoring-prometheus
       when: not dir_check.stat.exists
 
     - name: Replace IP address in Prometheus config file
       replace:
-        path: /var/lib/monitoring-iinerds/prometheus.yml
+        path: /var/lib/monitoring-prometheus/prometheus.yml
         regexp: '(\d{1,3}\.){3}\d{1,3}'
         replace: '{{ public_ip }}'
 
@@ -40,4 +40,4 @@
       become: true
       command: docker compose up -d
       args:
-        chdir: /var/lib/monitoring-iinerds
+        chdir: /var/lib/monitoring-prometheus
