@@ -3,6 +3,6 @@
 # - name: Change to Docker Compose directory and start the Compose file
 #   become: true
 #   shell: |
-#     cd /var/lib/monitoring-iinerds
+#     cd /var/lib/monitoring-prometheus
 #     docker compose up -d
 #
