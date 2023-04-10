@@ -55,6 +55,7 @@
       package:
         name:
           - docker-ce
+          - docker.io
           - docker-ce-cli
           - containerd.io
         state: present
