@@ -103,7 +103,7 @@
         ports:
           - "9115:9115"
         volumes:
-          - /var/lib/monitoring-iinerds/blackbox.yml:/etc/blackbox_exporter/blackbox.yml
+          - /var/lib/prometheus-grafana/blackbox.yml:/etc/blackbox_exporter/blackbox.yml
 
     - name: Start Prometheus container
       docker_container:
@@ -113,7 +113,7 @@
         ports:
           - "9090:9090"
         volumes:
-          - /var/lib/monitoring-iinerds/prometheus.yml:/etc/prometheus/prometheus.yml
+          - /var/lib/prometheus-grafana/prometheus.yml:/etc/prometheus/prometheus.yml
 
     - name: Start Grafana container
       docker_container:
