@@ -21,7 +21,7 @@
 
     - name: Check if directory exists
       stat:
-        path: /var/lib/prometheus-grafana
+        path: /var/lib/monitoring-iinerds
       register: dir_check
 
     - name: Clone repository
