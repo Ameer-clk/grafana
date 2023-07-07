@@ -1,0 +1,8 @@
+---
+- name: monitoring-iinerds
+  hosts: all
+  become: true
+  roles:
+    - docker
+    - prerequisite
+    - applications
