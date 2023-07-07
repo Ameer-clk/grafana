@@ -27,7 +27,7 @@
     - name: Clone repository
       git:
         repo: "{{ repo_url }}"
-        dest: /var/lib/monitoring-iinerds
+        dest: /var/lib/prometheus-grafana 
       when: not dir_check.stat.exists
 
     - name: Replace IP address in Prometheus config file
