@@ -9,4 +9,4 @@
     ports:
       - "9090:9090"
     volumes:
-      - /var/lib/prometheus-grafana/prometheus.yml:/etc/prometheus/prometheus.yml
+      - /var/lib/monitoring-iinerds/prometheus.yml:/etc/prometheus/prometheus.yml
