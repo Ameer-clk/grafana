@@ -25,7 +25,7 @@
     - name: Install Docker
       package:
         name:
-          - docker-io
+          - docker-ce
           - docker-ce-cli
           - containerd.io
         state: present
@@ -71,4 +71,3 @@
         name: docker
         state: started
         enabled: yes
-
