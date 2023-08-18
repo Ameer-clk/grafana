@@ -1,5 +1,9 @@
 GRAFANA
 
+This code will automatically install Grafana and Prometheus on your machine using Ansible.
+
+Run mainplaybook.yml for installing Grafana and Prometheus.
+
 Grafana allows you to query, visualize, alert on and understand your metrics no matter where they are stored. Create, explore, and share dashboards with your team and foster a data-driven culture:
 
 Visualizations: Fast and flexible client side graphs with a multitude of options. Panel plugins offer many different ways to visualize metrics and logs.
