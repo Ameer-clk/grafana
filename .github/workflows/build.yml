@@ -32,6 +32,6 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
       - name: Build and analyze
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          GITHUB_TOKEN: ${{ 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 }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ a69ac0e6e32e15045be572335e11c5add7b109b3 }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Ameer-clk_monitoring-iinerds
