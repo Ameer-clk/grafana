@@ -21,3 +21,8 @@ scrape_configs:
         target_label: instance
       - target_label: __address__
         replacement: 44.200.239.8:9115
+
+  - job_name: 'docker-containers'
+    static_configs:
+      - targets: ['172.17.0.1:3000']
+
