@@ -1,5 +1,5 @@
 ---
-- name: monitoring-iinerds
+- name: finstreet
   hosts: all
   become: true
   roles:
