@@ -22,7 +22,7 @@ scrape_configs:
       - target_label: __address__
         replacement: 44.200.239.8:9115
 
-  - job_name: 'docker-containers'
+  - job_name: 'cadvisor'
     static_configs:
-      - targets: ['172.17.0.1:3000']
+      - targets: ['localhost:8080']
 
