@@ -5,7 +5,7 @@ scrape_configs:
   - job_name: 'promndnode'
     scrape_interval: 5s
     static_configs:
-      - targets: ['localhost:9090','44.200.239.8:9100']
+      - targets: ['localhost:9090','44.200.239.0:9100']
 
   - job_name: 'blackbox_exporter'
     metrics_path: /probe
@@ -20,9 +20,13 @@ scrape_configs:
       - source_labels: [__param_target]
         target_label: instance
       - target_label: __address__
-        replacement: 44.200.239.8:9115
+        replacement: 44.200.239.0:9115
 
-  - job_name: 'cadvisor'
-    static_configs:
-      - targets: ['localhost:8080']
+- job_name: 'cadvisor'
+  static_configs:
+    - targets: 
+        - '54.227.158.00:8080'
+        - 'another_ip_address:port'
+        - 'third_ip_address:port'
+        # Add more cAdvisor instances as needed
 
