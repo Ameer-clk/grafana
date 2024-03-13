@@ -1,22 +1,31 @@
-GRAFANA
+# Grafana and Prometheus Installation using Ansible
 
-This code will automatically install Grafana and Prometheus on your machine using Ansible.
+## Overview
+This Ansible playbook automates the installation of Grafana and Prometheus on your machine. Grafana is a powerful tool for querying, visualizing, and alerting on metrics from various data sources, while Prometheus is a monitoring and alerting toolkit. By installing these tools, you can create dynamic dashboards, explore metrics, and set up alerting to ensure the reliability and performance of your systems.
 
-Run mainplaybook.yml for installing Grafana and Prometheus.
+## Features
+- Automates the installation of Grafana and Prometheus on your machine using Ansible.
+- Provides instructions for getting started with Grafana and Prometheus.
+- Includes links to installation guides and documentation for further reference.
 
-Grafana allows you to query, visualize, alert on and understand your metrics no matter where they are stored. Create, explore, and share dashboards with your team and foster a data-driven culture:
+## Usage
+1. Ensure you have Ansible installed on your machine.
+2. Clone this repository to your local system.
+3. Navigate to the directory containing the Ansible playbook.
+4. Run the main playbook `mainplaybook.yml` using the following command:
 
-Visualizations: Fast and flexible client side graphs with a multitude of options. Panel plugins offer many different ways to visualize metrics and logs.
-Dynamic Dashboards: Create dynamic & Doreusable dashboards with template variables that appear as dropdowns at the top of the dashboard.
-Explore Metrics: Explore your data through ad-hoc queries and dynamic drilldown. Split view and compare different time ranges, queries and data sources side by side.
-Explore Logs: Experience the magic of switching from metrics to logs with preserved label filters. Quickly search through all your logs or streaming them live.
-Alerting: Visually define alert rules for your most important metrics. Grafana will continuously evaluate and send notifications to systems like Slack, PagerDuty, VictorOps, OpsGenie.
-Mixed Data Sources: Mix different data sources in the same graph! You can specify a data source on a per-query basis. This works for even custom datasources.
 
-GET STARTED:
 
-INSTALLATION: https://grafana.com/docs/grafana/latest/setup-grafana/installation/
+5. Follow any prompts or instructions provided by the playbook during the installation process.
 
-DOCUMENTATION:
+## Getting Started
+- For installation instructions, refer to the [Grafana Installation Guide](https://grafana.com/docs/grafana/latest/setup-grafana/installation/).
+- Explore the [Grafana Documentation](https://grafana.com/docs/) for more information on using Grafana, creating dashboards, and configuring alerting.
+- Get started with Prometheus by following the [Prometheus Installation Guide](https://prometheus.io/docs/prometheus/latest/installation/).
+- Refer to the [Prometheus Documentation](https://prometheus.io/docs/) for detailed documentation on Prometheus setup, monitoring, and alerting.
 
-https://grafana.com/docs/
+## Contributing
+If you encounter any issues or have suggestions for improvements, please feel free to submit a pull request or open an issue on GitHub.
+
+## License
+This project is licensed under the [MIT License](LICENSE).
