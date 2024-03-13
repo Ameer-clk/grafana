@@ -29,7 +29,12 @@ This Ansible playbook automates the installation of Grafana and Prometheus on yo
 
     ```
 
-4. Follow any prompts or instructions provided by the playbook during the installation process.
+4. For monitoring customize the prometheus.yml according to you need:
+
+    ```
+    vim prometheus.yml
+
+   ```
 
 ## Getting Started
 - For installation instructions, refer to the [Grafana Installation Guide](https://grafana.com/docs/grafana/latest/setup-grafana/installation/).
