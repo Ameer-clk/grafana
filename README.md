@@ -9,14 +9,28 @@ This Ansible playbook automates the installation of Grafana and Prometheus on yo
 - Includes links to installation guides and documentation for further reference.
 
 ## Usage
-1. Ensure you have Ansible installed on your machine.
-2. Clone this repository to your local system.
-3. Navigate to the directory containing the Ansible playbook.
-4. Run the main playbook `mainplaybook.yml` using the following command:
+1. Ensure you have Ansible installed on your machine. Use the above Bash Script to install the Ansible on you machine:
+    ```
+    bash ansible.sh
 
+     ```
 
+3. Clone this repository to your local system.
 
-5. Follow any prompts or instructions provided by the playbook during the installation process.
+    ```
+    git clone https://github.com/Ameer-clk/finstreet.git
+    
+   ```
+
+5. Navigate to the directory containing the Ansible playbook.
+6. Run the main playbook `mainplaybook.yml` using the following command:
+   
+   ```
+   ansible-playbook mainplaybook.yml
+
+    ```
+
+7. Follow any prompts or instructions provided by the playbook during the installation process.
 
 ## Getting Started
 - For installation instructions, refer to the [Grafana Installation Guide](https://grafana.com/docs/grafana/latest/setup-grafana/installation/).
