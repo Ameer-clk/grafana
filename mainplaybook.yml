@@ -1,5 +1,5 @@
 ---
-- name: finstreet
+- name: grafana-monitoring
   hosts: all
   become: true
   roles:
