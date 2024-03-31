@@ -9,5 +9,5 @@
     ports:
       - "9115:9115"
     volumes:
-      - /var/lib/finstreet/blackbox.yml:/etc/blackbox_exporter/blackbox.yml
+      - /var/lib/grafana-monitoring/blackbox.yml:/etc/blackbox_exporter/blackbox.yml
 
