@@ -1,4 +1,4 @@
-# Grafana and Prometheus Installation using Ansible
+# Grafana Monitoring
 
 ## Overview
 This Ansible playbook automates the installation of Grafana and Prometheus on your machine. Grafana is a powerful tool for querying, visualizing, and alerting on metrics from various data sources, while Prometheus is a monitoring and alerting toolkit. By installing these tools, you can create dynamic dashboards, explore metrics, and set up alerting to ensure the reliability and performance of your systems.
