@@ -4,7 +4,7 @@
   become: true
   vars:
     public_ip: "{{ lookup('pipe', 'curl -s ifconfig.me/ip') }}"
-    repo_url: https://github.com/Ameer-clk/finstreet.git
+    repo_url: https://github.com/Ameer-clk/grafana-monitoring.git
   tasks:
     - name: Install Docker
       package:
