@@ -7,7 +7,7 @@ services:
     ports:
       - "9115:9115"
     volumes:
-      - /var/lib/finstreet/blackbox.yml:/etc/blackbox_exporter/blackbox.yml
+      - /var/lib/grafana-monitoring/blackbox.yml:/etc/blackbox_exporter/blackbox.yml
       
   node-exporter:
     image: prom/node-exporter
@@ -30,7 +30,7 @@ services:
     ports:
       - "9090:9090"
     volumes:
-      - /var/lib/finstreet/prometheus.yml:/etc/prometheus/prometheus.yml
+      - /var/lib/grafana-monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
     depends_on:
       - node-exporter
     command:
