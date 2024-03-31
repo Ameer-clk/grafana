@@ -3,5 +3,5 @@
 - name: Change to Docker Compose directory and start the Compose file
   become: true
   shell: |
-    cd /var/lib/finstreet
+    cd /var/lib/grafana-monitoring
     docker compose up -d
