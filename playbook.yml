@@ -21,7 +21,7 @@
 
     - name: Check if directory exists
       stat:
-        path: /var/lib/finstreet
+        path: /var/lib/grafana-monitoring
       register: dir_check
 
     - name: Clone repository
@@ -40,4 +40,4 @@
       become: true
       command: docker compose up -d
       args:
-        chdir: /var/lib/finstreet
+        chdir: /var/lib/grafana-monitoring
