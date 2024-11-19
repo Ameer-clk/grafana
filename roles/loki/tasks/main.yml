@@ -1,0 +1,15 @@
+- name: Install Loki
+  apt:
+    name: loki
+    state: present
+
+- name: Configure Loki
+  template:
+    src: loki-config.yaml.j2
+    dest: /etc/loki/loki-config.yaml
+
+- name: Start Loki service
+  systemd:
+    name: loki
+    state: started
+    enabled: yes
