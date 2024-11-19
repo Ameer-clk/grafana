@@ -44,3 +44,13 @@ services:
     ports:
       - "3000:3000"
 
+  loki:
+    image: grafana/loki:latest
+    restart: always
+    ports:
+      - "3100:3100"
+    volumes:
+      - /var/lib/grafana-monitoring/loki-config.yaml:/etc/loki/loki-config.yaml
+    command:
+      - '-config.file=/etc/loki/loki-config.yaml'
+
